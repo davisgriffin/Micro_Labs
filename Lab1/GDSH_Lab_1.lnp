@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "gdsh_lab_1.o" --strict --scatter "GDSH_Lab_1.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\GDSH_Lab_1.map" -o "GDSH_Lab_1.axf"
