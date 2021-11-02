@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'GD_SH_Lab3.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"davis_haney_lab3.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "davis_haney_lab3.o" --strict --scatter "GD_SH_Lab3.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\GD_SH_Lab3.map" -o "GD_SH_Lab3.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'GD_SH_Lab3.axf'
+### ADS-LD Command File: 'GD_SH_Lab3.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'GD_SH_Lab3.lnp', Handle=0x00000FAC
+### Writing '.lnp' file
+### ADS-LD Command file 'GD_SH_Lab3.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
