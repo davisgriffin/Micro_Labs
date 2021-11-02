@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>GD_SH_Lab_2</OutputName>
+          <OutputName>Davis_Haney_Lab2_2</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -394,9 +394,9 @@
               <FilePath>.\Startup.s</FilePath>
             </File>
             <File>
-              <FileName>Davis_Haney_Lab2.c</FileName>
+              <FileName>Davis_Haney_Lab2_2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Davis_Haney_Lab2.c</FilePath>
+              <FilePath>.\Davis_Haney_Lab2_2.c</FilePath>
             </File>
           </Files>
         </Group>

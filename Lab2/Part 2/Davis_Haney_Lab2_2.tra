@@ -1,0 +1,20 @@
+*** Creating Trace Output File 'Davis_Haney_Lab2_2.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"davis_haney_lab2_2.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "davis_haney_lab2_2.o" --strict --scatter "Davis_Haney_Lab2_2.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Davis_Haney_Lab2_2.map" -o "Davis_Haney_Lab2_2.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'Davis_Haney_Lab2_2.axf'
+### ADS-LD Command File: 'Davis_Haney_Lab2_2.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'Davis_Haney_Lab2_2.lnp', Handle=0x00000DE8
+### Writing '.lnp' file
+### ADS-LD Command file 'Davis_Haney_Lab2_2.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

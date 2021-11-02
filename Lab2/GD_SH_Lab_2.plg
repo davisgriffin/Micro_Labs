@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\davis\Documents\School\Micro_Labs\Lab2\GD_SH_Lab_2.uvproj
+Project File Date:  10/26/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling Davis_Haney_Lab2.c...
+compiling Davis_Haney_Lab2_2.c...
+linking...
+GD_SH_Lab_2.axf: Error: L6200E: Symbol __ARM_use_no_argv multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol wait multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol main multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+Target not created
+Build target 'Target 1'
+linking...
+GD_SH_Lab_2.axf: Error: L6200E: Symbol __ARM_use_no_argv multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol wait multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol main multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+Target not created
+Build target 'Target 1'
+compiling Davis_Haney_Lab2.c...
+compiling Davis_Haney_Lab2_2.c...
+linking...
+GD_SH_Lab_2.axf: Error: L6200E: Symbol __ARM_use_no_argv multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol wait multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+GD_SH_Lab_2.axf: Error: L6200E: Symbol main multiply defined (by davis_haney_lab2_2.o and davis_haney_lab2.o).
+Target not created
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling Davis_Haney_Lab2.c...
+linking...
+Program Size: Code=876 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+"GD_SH_Lab_2.axf" - 0 Error(s), 0 Warning(s).

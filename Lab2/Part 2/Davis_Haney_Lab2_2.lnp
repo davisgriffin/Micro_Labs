@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "davis_haney_lab2_2.o" --strict --scatter "Davis_Haney_Lab2_2.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\Davis_Haney_Lab2_2.map" -o "Davis_Haney_Lab2_2.axf"
