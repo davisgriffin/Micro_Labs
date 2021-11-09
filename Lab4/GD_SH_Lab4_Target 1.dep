@@ -1,0 +1,4 @@
+Dependencies for Project 'GD_SH_Lab4', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x4F58DE88)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips --list "Startup.lst" --xref -o "Startup.o" --depend "Startup.d")
+F (.\Davis_Haney_Lab4.c)(0x618AC888)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "davis_haney_lab4.o" --omf_browse "davis_haney_lab4.crf" --depend "davis_haney_lab4.d")
+I (C:\Keil\ARM\Inc\Philips\LPC214x.H)(0x4F58E03C)

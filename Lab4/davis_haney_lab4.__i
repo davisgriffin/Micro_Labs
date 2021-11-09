@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "davis_haney_lab4.o" --omf_browse "davis_haney_lab4.crf" --depend "davis_haney_lab4.d" "Davis_Haney_Lab4.c"
