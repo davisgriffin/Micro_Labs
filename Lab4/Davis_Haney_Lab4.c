@@ -45,8 +45,6 @@ void delayU (int intUSeconds) {
 void delay(void) {
     unsigned int val;
 
-    AD0CR |= (1<<21 | 0x5 << 8 | 1 << 2); // operational, 2.5MHz, A0.2 selected
-    AD0CR &= 0 << 17; // 10 bit resolution
     AD0CR |= 1 << 24; // start conversion
     do {
         val = (AD0DR2 >> 6) & 0x03FF;
@@ -63,6 +61,8 @@ int main (void) {
     unsigned int dir = 0;
 
     PINSEL1 |= 0x01 << 26; // set P0.29 to AD0.2
+    AD0CR |= (1<<21 | 0x5 << 8 | 1 << 2); // operational, 2.5MHz, A0.2 selected
+    AD0CR &= 0 << 17; // 10 bit resolution
     IODIR0 = 0x0000FF00;
     IOSET0 = 0x0000FF00;
 
