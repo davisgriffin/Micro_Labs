@@ -32,49 +32,50 @@
  */
 
 void delayU (int intUSeconds) {
-    T1TCR &= 0xFE; // turn off counter
-    T1PR = 0; // 1:1 TC scaling
-    T1IR |= 0x01; // clear interrupts
-    T1MCR |= 0x07; // allow interrupts for MR0
-    
-    T1MR0 = 15 * intUSeconds; // 15000 cycles per second
-    T1TCR  |= 0x01; // enable counter
-    while(T1IR ^ 0x01); // wait until MR0 interrupt generated
+    T1TCR = 0x02;
+    T1PR = 0x00;
+    T1MR0 = intUSeconds;
+    T1IR = 0xFF;
+    T1MCR = 0x04;
+    T1TCR = 0x01;
+    while(T1TCR & 0x01);
 }
 
 void delay(void) {
     unsigned int val;
 
-    AD0CR |= 1 << 24; // start conversion
+    AD0CR |= 0x01000000; // start conversion
     do {
-        val = (AD0DR2 >> 6) & 0x03FF;
-    } while(!(AD0DR2 & 0x80000000)); // while DONE bit not set
+        val = AD0DR2;
+    } while((val & 0x80000000)==0); // while DONE bit not set
     AD0CR &= ~0x01000000;
-    //val = (~(val >> _) & _);
+    val = (~(val >> 6) & 0x03FF);
     val = ((val + 100) >> 2) << 10;
 
     delayU(val);
 }
 
 int main (void) {
-    unsigned int mask = 0x00008000;
-    unsigned int dir = 0;
+    unsigned int i = 0;
 
-    PINSEL1 |= 0x01 << 26; // set P0.29 to AD0.2
-    AD0CR |= (1<<21 | 0x5 << 8 | 1 << 2); // operational, 2.5MHz, A0.2 selected
-    AD0CR &= 0 << 17; // 10 bit resolution
+    PINSEL1 = (0x1 << 26); // set P0.29 to AD0.2
+    AD0CR |= (1 << 21); // set operational
+    AD0CR |= ((0x0<<17) | (0x05 << 8) | (1 << 2)); // 10bit res, 2.5MHz, A0.2 selected
+    
     IODIR0 = 0x0000FF00;
     IOSET0 = 0x0000FF00;
 
 	while(1){
-        IOCLR0 = mask;
-        delay();
-        IOSET0 = mask;
-        
-        if (dir) mask = mask << 1;
-        else mask = mask >> 1;
-
-        if( (mask & 0x00008000) || (mask & 0x00000100)) dir = !dir;
+        for(i=0; i<7; i++) {
+            IOCLR0 = 1<< i + 8;
+            delay();
+            IOSET0 = 1 << i + 8;
+        }
+        for(i=0; i<7; i++) {
+            IOCLR0 = 1 << 15-i;
+            delay();
+            IOSET0 = 1<<15-i;
+        }
 	}
 
     
