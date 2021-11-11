@@ -1,9 +1,10 @@
 #include <LPC214x.H>
 
 /**
- * ECE5450 Lab 3 Exercise 1
+ * ECE5450 Lab 4
  * This program will display LEDs blinking from left-to-right and then right-to-
- * left using P0.8-P0.15 and the Pclk interrupts of the microcontroller.
+ * left using P0.8-P0.15, the Pclk interrupts of the microcontroller, and its
+ * ADC.
  * NOTE: LEDs are tied to VCC and IO, so a high IO leads to an extinguished LED
  * due to an open circuit. No current will flow unless the pin is low.
  * 
@@ -15,6 +16,17 @@
  * appropriate function from T1MCR
  * T1IR is the interrupt register which flags 1 when an interrupt is generated
  * This also requires an assignment of 1 to reset interrupt
+ * 
+ * NOTE: AD0CR is a control register.
+ * -    Bit 21      : PDN - operational
+ * -    Bit 19:17   : 000 = 11 clocks = 10 bit accuracy
+ * -    Bit 15:8    : CLKDIV = (Pclk/Adclk) - 1
+ * -    Bit 7:0     : SEL - channel select
+ * -    Bit 24      : START
+ * 
+ * AD0DR7:0 is the data register.
+ * -    Bit 31      : DONE
+ * -    Bit 15:6    : RESULT
  * 
  * @authors Griffin Davis, Sydnee Haney
  */
@@ -28,7 +40,6 @@ void delayU (int intUSeconds) {
     T1MR0 = 15 * intUSeconds; // 15000 cycles per second
     T1TCR  |= 0x01; // enable counter
     while(T1IR ^ 0x01); // wait until MR0 interrupt generated
-    return; // return to code
 }
 
 void delay(void) {
@@ -39,7 +50,7 @@ void delay(void) {
     AD0CR |= 1 << 24; // start conversion
     do {
         val = (AD0DR2 >> 6) & 0x03FF;
-    } while((AD0DR2 & 0x10000000) == 0);
+    } while(!(AD0DR2 & 0x80000000)); // while DONE bit not set
     AD0CR &= ~0x01000000;
     //val = (~(val >> _) & _);
     val = ((val + 100) >> 2) << 10;
@@ -51,6 +62,7 @@ int main (void) {
     unsigned int mask = 0x00008000;
     unsigned int dir = 0;
 
+    PINSEL1 |= 0x01 << 26; // set P0.29 to AD0.2
     IODIR0 = 0x0000FF00;
     IOSET0 = 0x0000FF00;
 
