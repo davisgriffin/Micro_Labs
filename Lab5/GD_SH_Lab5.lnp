@@ -1,0 +1,4 @@
+--cpu ARM7TDMI "startup.o" "davis_haney_lab5.o" --strict --scatter "GD_SH_Lab5.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\GD_SH_Lab5.map" -o "GD_SH_Lab5.axf"
