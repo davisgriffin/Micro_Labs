@@ -1,71 +1,144 @@
-#include <LPC214x.H>
+/************************************************************************/
+/* This program provides the necessary code for displaying information	*/
+/* on the LPC2148 Educational Board. The LCD on the board is based upon	*/
+/* the Samsung SK0070B LCD controller chip. Refer to the datasheet for	*/
+/* that chip for programming information. 								*/
+/* The hardware on the LPC2148 board for the LCD interface is:			*/
+/*	LCD D0 - D7 = P1.16 - P1.23, respectively							*/
+/*	LCD RS = P1.24 ... LCD R/W = P0.22 ... LCD E = P1.25 ...			*/
+/*	LCD Backlight  = P0.30....High lights the display.					*/
+/*  This program intializes the LCD controller for:						*/
+/*	8-bit interface ... 2 lines ... 5x7 dot matrix font ...				*/
+/*	Display and Cursor ON ... Blink OFF ... Entry Mode is Increment		*/
+/************************************************************************/
 
-/**
- * ECE5450 Lab 5
- * This program will display LEDs blinking from left-to-right and then right-to-
- * left using P0.8-P0.15, the Pclk interrupts of the microcontroller, and its
- * ADC.
- * 
- * NOTE: T1TCR enables counter with 1 at bit 0, or resets with 1 at bit 1
- * T1PR allows prescaling, 0 is 1:1, 1 is half speed, 2 is third speed, etc.
- * T1MCR controls whether a timer generates an interrupt, is reset, or stops
- * when TC matches MR
- * T1MR0 is one match register for TC to be compared to and generate the
- * appropriate function from T1MCR
- * T1IR is the interrupt register which flags 1 when an interrupt is generated
- * This also requires an assignment of 1 to reset interrupt
- * 
- * NOTE: P0.12 and P0.21 control direction of the stepper motor. If P0.12 is
- * leading then the motor moves forward, if it is lagging it moves backwards.
- * 
- * 
- * @authors Griffin Davis, Sydnee Haney
- */
 
-void forward(void);
-void reverse(void);
-void wait(void);
-unsigned int fPhase = 1<<12;
-unsigned int rPhase = 1<<21;
+#include "LPC214x.h"				/* LPC21xx Definition File...Includes LPC2148 */
 
-int main (void) {
-    int i=0;
-    
-    IODIR0 = (0x1<<12 | 0x1<<21);
-    IOCLR0 = (0x1<<12 | 0x1<<21);
+	int RS = (1<<24);	/* Bit mask for RS pin on LCD = P1.24 */
+	int E =  (1<<25);	/* Bit mask for E pin on LCD = P1.25 */
+	int RW = (1<<22);	/* Bit mask for RW pin on LCD = P0.22 */
+	int Backlight = (1<<30);	/* Bit mask for Backlight pin on LCD = P0.30 */
+	int DL = (1<<4);	/* Bit position for DL bit in Function Set Command */
+	int N = (1<<3);		/* 2-line if 1 */
+	int F = (0<<2);		/* 5 * 10 if 1 */
+	int I_D = (0<<1);	/* cursor blink move to right if 1 */
+	int SH = (0<<0);	/* shift entire display if 1 */
+	int D = (1<<2);		/* Display On/Off Command */
+	int C = (1<<1);		/* Cursor on/off*/
+	int B = (1<<0);		/* Blink */
+	int FUNC = (1<<5);	/* Function Mode Set Command */
+	int ENTRY = (1<<2);	/* Entry Mode Set Command */
+	int DISP = (1<<3);	/* Display On/Off Command) */
+	int CLEAR_DISP = 0x01;	/* Clear LCD Display Command */
 
-	while(1){
-        for(i=0; i<50; i++) forward();
-        for(i=0; i<50; i++) reverse();
-	}
+/************************************************************/
+/* The following function implements a time delay using the	*/
+/* Timer T1 in a polled mode.								*/
+/* The delay amount is in terms of number of microseconds.	*/
+/************************************************************/
+void delayUs(unsigned int delayInus)
+{
 
-    
-}
+			/* Setup timer #1 for delay in the order of microseconds */
+  T1TCR = 0x02;          					/* Stop and reset timer */
+  T1PR  = 0x00;								/* Set prescaler to zero */
+  T1MR0 = delayInus * 15;					/* Based upon Pclk = 15 MHz. */
+  T1IR  = 0xff;								/* Reset all the interrupt flags */
+  T1MCR = 0x04;								/* Stop the timer on a match */
+  T1TCR = 0x01;								/* Start the timer now */
+  
+			/* Wait until the timer has timed out TCR[0] will be set 0 when MR[2] = 1*/
+  while (T1TCR & 0x01);
 
-void forward(void) {
-    wait();
-    IOSET0 |= fPhase;
-    wait();
-    IOSET0 |= rPhase;
-    wait();
-    IOCLR0 |= fPhase;
-    wait();
-    IOCLR0 |= rPhase;
-}
+} /* end of delayInus */
 
-void reverse(void) {
-    wait();
-    IOSET0 |= rPhase;
-    wait();
-    IOSET0 |= fPhase;
-    wait();
-    IOCLR0 |= rPhase;
-    wait();
-    IOCLR0 |= fPhase;
-}
 
-void wait(void) {
-    int speed = 50000;
-    int d = 0;
-    for(d=0; d<speed; d++);
+
+/************************************************************/
+/* The following function the code necessaty to write		*/
+/* commands to the LCD display. To accomodate the time		*/
+/* needed for the display clear code, we will delay 4 mS	*/
+/* after the command is written.							*/
+/************************************************************/
+
+void LCD_CommandWrite (unsigned int Command)
+	{
+		IO1PIN &= 0x00;
+		IO1PIN |= (Command << 16); // (Command << 0)
+		IO1CLR |= RS;
+		IO0CLR |= RW;
+		IO1SET |= E;
+		IO1CLR |= E;
+		delayUs(4000);
+	} /* end of LCD_CommandWrite */
+
+
+
+/************************************************************/
+/* The following function provides code necessary to write	*/
+/* data to the LCD display. To accomodate the time			*/
+/* needed for displaying a charatecr, we will delay 100 uS	*/
+/* after the command is written.							*/
+/************************************************************/
+
+void LCD_DataWrite (unsigned int Character)
+	{ 
+		IO1PIN &= 0x00;
+		IO1PIN |= (Character << 16);
+		IO1SET |= RS;
+		IO0CLR |= RW;
+		IO1SET |= E;
+		IO1CLR |= E;
+		delayUs(100);
+	} /* end of LCD_DataWrite */
+		
+
+void LCD_Init (void)
+	{
+		LCD_CommandWrite (FUNC | DL | N);	/* Send Function Set command with 8-bit I/F, 2 lines, 5x7 font */
+		LCD_CommandWrite (DISP | D | C);	/* Send Display On/Off command with Display ON, Cursor ON, Blink OFF */
+		LCD_CommandWrite (ENTRY | I_D);		/* Send Entry Mode Set command with Increment Selected */
+	}/* end of LCD_Init */
+
+
+
+int main(void)
+{
+
+	PINSEL0 = 0x00000000;					/* All pins P0.0 to P0.15 set as GPIO */
+	PINSEL1 = 0x05000000;					/* Define A/D pins: P0.28, P0.29 = AIN1, AIN2 */
+	PINSEL2 = 0x00000000;					/* P1.0 - P1.36 as GPIO */
+
+	IODIR0 = (255<<8 | 1<<21 | 1<<22 | 1<<30);	/* P0.8 - P0.15 as output - LEDs P0.22 P0.30 as Outputs - LCD 'R/W' and Backlight */
+											/* P0.12 and P0.21 as outputs for stepper motor */
+	IODIR1 = (255<<16 | 1<<24 | 1<<25);		/* P1.16 - P1.23 as outputs: LCD Data...P1.24 as output: RS...P1.25 as output E: */
+	IOSET0 |= Backlight;	// Turn on the LCD Backlight
+	//LCD_DataWrite ('E');
+/************************************/
+/* Here is the main program loop.	*/
+/************************************/
+
+	while (1)
+	{
+		delayUs(8000);	// Delay 8 ms to give LCD controller time to intialize internally 
+
+		LCD_Init();	// Initialize the LCD Display to our operating conditions 
+
+		IOSET0 |= Backlight;	// Turn on the LCD Backlight 
+
+		LCD_CommandWrite (CLEAR_DISP);	// Clear the display 
+		LCD_DataWrite ('E');	// Write a 'E' onto the LCD display in 1st location 
+		LCD_DataWrite ('C');	// Write a 'C' onto the LCD display in 2nd location 
+		LCD_DataWrite ('E');	// Write a 'E' onto the LCD display in 3rd location 
+		LCD_DataWrite('5');
+		LCD_DataWrite('4');
+		LCD_DataWrite('5');
+		LCD_DataWrite('0');
+		
+
+		while(1);	// Now sit here and do nothing else 
+
+	} // end of main 
+	
 }
