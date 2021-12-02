@@ -1,5 +1,6 @@
 /************************************************************************/
-/* This program provides the necessary code for displaying information	*/
+/* @authors Griffin Davis & Sydnee Haney (for LCD_CommandWrite?DataWrite)
+ * This program provides the necessary code for displaying information	*/
 /* on the LPC2148 Educational Board. The LCD on the board is based upon	*/
 /* the Samsung SK0070B LCD controller chip. Refer to the datasheet for	*/
 /* that chip for programming information. 								*/
