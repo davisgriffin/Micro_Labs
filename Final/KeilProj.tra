@@ -1,0 +1,24 @@
+*** Creating Trace Output File 'KeilProj.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup.o"'
+### List of Objects: adding '"davis_haney_final.o"'
+### List of Objects: adding '"lcd_driver.o"'
+### List of Objects: adding '"casino.o"'
+### List of Objects: adding '"joystick.o"'
+### List of Objects: adding '"timer.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "startup.o" "davis_haney_final.o" "lcd_driver.o" "casino.o" "joystick.o" "timer.o" --strict --scatter "KeilProj.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\KeilProj.map" -o "KeilProj.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'KeilProj.axf'
+### ADS-LD Command File: 'KeilProj.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'KeilProj.lnp', Handle=0x00000CE0
+### Writing '.lnp' file
+### ADS-LD Command file 'KeilProj.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
