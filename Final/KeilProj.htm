@@ -3,7 +3,7 @@
 <title>Static Call Graph - [C:\Users\davis\Documents\School\Micro_Labs\Final\KeilProj.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image C:\Users\davis\Documents\School\Micro_Labs\Final\KeilProj.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Sun Dec 05 03:49:55 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Mon Dec 06 17:11:19 2021
 <BR><P>
 <H3>Maximum Stack Usage =         96 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -274,7 +274,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunSlots
 </UL>
 
-<P><STRONG><a name="[1e]"></a>RunSlots</STRONG> (ARM, 340 bytes, Stack size 40 bytes, casino.o(.text))
+<P><STRONG><a name="[58]"></a>Joystick_Init</STRONG> (ARM, 44 bytes, Stack size 0 bytes, joystick.o(.text), UNUSED)
+
+<P><STRONG><a name="[20]"></a>Joystick_Interrupt_Down_Init</STRONG> (ARM, 88 bytes, Stack size 0 bytes, joystick.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1e]"></a>RunSlots</STRONG> (ARM, 428 bytes, Stack size 40 bytes, casino.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = RunSlots &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -299,12 +305,6 @@ Global Symbols
 <LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteString
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[58]"></a>Joystick_Init</STRONG> (ARM, 44 bytes, Stack size 0 bytes, joystick.o(.text), UNUSED)
-
-<P><STRONG><a name="[20]"></a>Joystick_Interrupt_Down_Init</STRONG> (ARM, 88 bytes, Stack size 0 bytes, joystick.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[24]"></a>delayUs</STRONG> (ARM, 76 bytes, Stack size 0 bytes, timer.o(.text))

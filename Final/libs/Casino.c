@@ -45,6 +45,15 @@ void RunSlots(void) {
         } else {
             LCD_WriteString("WINNER!");
         }
+    } else if ((botRow[0] == botRow[1]) && (botRow[1] == botRow[2])) {
+        if (botRow[0] == 4) {
+            // If we hit all 7's
+            LCD_WriteString("HUGE");
+            LCD_SetPosition(2,9);
+            LCD_WriteString("WINNER!");
+        } else {
+            LCD_WriteString("WINNER!");
+        }
     } else {
         LCD_WriteString("loser.");
     }

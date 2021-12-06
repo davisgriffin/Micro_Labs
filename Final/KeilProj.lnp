@@ -1,4 +1,4 @@
---cpu ARM7TDMI "startup.o" "davis_haney_final.o" "lcd_driver.o" "casino.o" "joystick.o" "timer.o" --strict --scatter "KeilProj.sct" 
+--cpu ARM7TDMI "startup.o" "davis_haney_final.o" "lcd_driver.o" "joystick.o" "casino.o" "timer.o" --strict --scatter "KeilProj.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\KeilProj.map" -o "KeilProj.axf"
