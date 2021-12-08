@@ -7,12 +7,14 @@
 /* RunSlots
  * Runs the slot machine game using the on-board LCD
  */
-void RunSlots(void);
+void RunSlots(int* points);
 
 /* Slots_Init
  * Create the necssary characters in LCD CGRAM for the game and display play
  * message
  */
-void Slots_Init(void);
+void Slots_Init(int points);
+
+int RunWheel(int currentStep, int* points);
 
 #endif
