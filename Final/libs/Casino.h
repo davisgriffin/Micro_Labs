@@ -10,8 +10,8 @@
 #define CASINO_H
 
 // Constants
-#define _slots_winBonus 50
-#define _slots_hugeWinBonus 100
+#define _slots_winBonus 100
+#define _slots_hugeWinBonus 200
 #define _slots_cost 10
 #define _wheel_winBonus 50
 #define _wheel_hugeWinBonus 75
