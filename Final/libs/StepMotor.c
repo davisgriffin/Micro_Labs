@@ -1,6 +1,9 @@
 
-// Title
-// @authors Griffin Davis and Sydnee Haney
+/**
+ * Step motor source file. This contains many of the functions required to
+ * efficiently drive the step motor on board the LPC2148 education board.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #include "LPC214x.h"
 #include "StepMotor.h"

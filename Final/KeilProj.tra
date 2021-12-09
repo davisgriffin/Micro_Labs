@@ -5,18 +5,18 @@
 ### List of Objects: adding '"davis_haney_final.o"'
 ### List of Objects: adding '"lcd_driver.o"'
 ### List of Objects: adding '"casino.o"'
-### List of Objects: adding '"timer.o"'
 ### List of Objects: adding '"interrupts.o"'
 ### List of Objects: adding '"stepmotor.o"'
+### List of Objects: adding '"timer.o"'
 ### ADS-LD Command completed:
---cpu ARM7TDMI "startup.o" "davis_haney_final.o" "lcd_driver.o" "casino.o" "timer.o" "interrupts.o" "stepmotor.o" --strict --scatter "KeilProj.sct" 
+--cpu ARM7TDMI "startup.o" "davis_haney_final.o" "lcd_driver.o" "casino.o" "interrupts.o" "stepmotor.o" "timer.o" --strict --scatter "KeilProj.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\KeilProj.map" -o "KeilProj.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: 'KeilProj.axf'
 ### ADS-LD Command File: 'KeilProj.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'KeilProj.lnp', Handle=0x00000E04
+### Creating CmdFile 'KeilProj.lnp', Handle=0x00000D9C
 ### Writing '.lnp' file
 ### ADS-LD Command file 'KeilProj.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

@@ -1,5 +1,9 @@
 
-// Title
+/**
+ * Step motor header file. This contains many of the functions and pins required
+ * to efficiently drive the step motor on board the LPC2148 education board.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #ifndef STEPMOTOR_H
 #define STEPMOTOR_H

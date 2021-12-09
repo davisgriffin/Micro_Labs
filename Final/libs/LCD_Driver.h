@@ -1,5 +1,9 @@
 
-// Title
+/**
+ * LCD Driver header file. This contains many of the functions required to
+ * efficiently drive the LMB162A LCD on board the LPC2148 education board.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #ifndef LCD_DRIVER_H
 #define LCD_DRIVER_H
@@ -17,14 +21,6 @@
 #define LCD_SETDDRAM  0x80
 
 // Functions
-
-/* LCD_Command
- * Writes a specified command to the LCD
- * ------------------------------------------
- * Paramaters: cmd
- *  - 8-bit command
- */
-void LCD_Command(unsigned char cmd);
 
 /* LCD_Init
  * Sets the display to two lines, 8-bit, no cursor or blink.

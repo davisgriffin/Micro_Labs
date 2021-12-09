@@ -1,5 +1,9 @@
 
-// Title
+/**
+ * Timer source file. This contains functions required to use synchronous delays
+ * in source code.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #ifndef TIMER_H
 #define TIMER_H

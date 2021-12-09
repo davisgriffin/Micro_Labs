@@ -1,6 +1,10 @@
 
-// Title
-// @authors Griffin Davis and Sydnee Haney
+/**
+ * Casino source file. This contains each of the games initialization and
+ * running functions. Reference Davis_Haney_Final on how to set up your own
+ * casino.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,9 +13,6 @@
 #include "Timer.h"
 #include "StepMotor.h"
 
-#define _winBonus 50
-#define _hugeWinBonus 100
-
 void WritePoints(int points) {
     char chPoints[4];
     sprintf(chPoints, "%i", points);
@@ -19,24 +20,39 @@ void WritePoints(int points) {
     LCD_WriteString(chPoints);
 }
 
+void WriteInt(int num) {
+    char chNum[4];
+    sprintf(chNum, "%i", num);
+    LCD_WriteString(chNum);
+}
+
 void HugeWinner(int* points) {
     LCD_SetPosition(1,4);
     LCD_WriteString("HUGE");
     LCD_SetPosition(2,4);
     LCD_WriteString("WINNER!");
-    *points += _hugeWinBonus;
+    *points += _slots_hugeWinBonus;
     WritePoints(*points);
 }
 
 void Winner(int* points) {
     LCD_SetPosition(1,4);
     LCD_WriteString("WINNER!");
-    *points += _winBonus;
+    *points += _slots_winBonus;
     WritePoints(*points);
 }
 
 void CheckPoints(int* points) {
-    if (*points<10) *points = 0;
+    if (*points<_slots_cost) *points = 0;
+}
+
+void GameSelect(void) {
+    LCD_Clear();
+    LCD_SetPosition(1,0);
+    LCD_WriteString("DWN-SLOTS BTN-21");
+    LCD_SetPosition(2,0);
+    LCD_WriteString("IN-WHEEL");
+    
 }
 
 void RunSlots(int* points) {
@@ -47,7 +63,7 @@ void RunSlots(int* points) {
     CheckPoints(points);
     if (points == 0) ;
 
-    *points -= 10;
+    *points -= _slots_cost;
     LCD_Clear();
     WritePoints(*points);
     LCD_SetPosition(1,3);
@@ -150,12 +166,19 @@ void Slots_Init(int points) {
     LCD_CreateChar(3, money);
     LCD_CreateChar(4, seven);
 
-    LCD_WriteString("PULL LEVER");
-    LCD_SetPosition(1, 12);
+    LCD_WriteString("PULL TO PLAY");
+    LCD_SetPosition(1, 13);
     sprintf(chPoints, "%i", points);
     LCD_WriteString(chPoints);
     LCD_SetPosition(2,0);
-    LCD_WriteString("TO PLAY");
+    LCD_WriteString("PUSH TO CHANGE");
+}
+
+void Wheel_Init(int points) {
+    LCD_Clear();
+    LCD_SetPosition(2,0);
+    LCD_WriteString("WHEEL OF FORTUNE");
+    WritePoints(points);
 }
 
 int RunWheel(int currentStep, int* points) {
@@ -167,18 +190,141 @@ int RunWheel(int currentStep, int* points) {
         case 1:
         case 2:
             LCD_WriteString("YOU LOSE 50!");
-            *points -= 50;
+            *points -= _wheel_loseCost;
             break;
         case 3:
             LCD_WriteString("YOU WON 75!");
-            *points += 75;
+            WritePoints(_wheel_hugeWinBonus);
+            *points += _wheel_hugeWinBonus;
             break;
         case 4:
             LCD_WriteString("YOU WON 50!");
-            *points += 50;
+            WritePoints(_wheel_winBonus);
+            *points += _wheel_winBonus;
             break;
     }
     CheckPoints(points);
     WritePoints(*points);
     return currentStep;
+}
+
+void BlackJack_Init(int points) {
+    LCD_Clear();
+    LCD_SetPosition(1,0);
+    LCD_WriteString("BLACKJACK");
+    LCD_SetPosition(2,0);
+    LCD_WriteString("PULL TO HIT");
+    WritePoints(points);
+}
+
+void WriteCard(int card) {
+    if (card < 10) {
+        LCD_WriteChar(card+0x30);
+        return;
+    }
+    switch(card) {
+    case 10:
+        LCD_WriteChar('T');
+        break;
+    case 11:
+        LCD_WriteChar('J');
+        break;
+    case 12:
+        LCD_WriteChar('Q');
+        break;
+    case 13:
+        LCD_WriteChar('K');
+        break;
+    case 14:
+        LCD_WriteChar('A');
+        break;
+    }
+}
+
+int CheckValue(int card, int sum) {
+    if(card!=14) {
+        if(card<10) return card;
+        else return 10;
+    }
+    if(sum+11 > 21) return 1;
+    return 11;
+}
+
+int RunBlackJack(int* points, int* plyrSum, int* dlrSum, int* dlrDown, int turn) {
+    int i=0;
+    int card=0;
+    // Game starting
+    if (!turn) {
+        LCD_Clear();
+        LCD_SetPosition(1,0);
+        LCD_WriteString("DEALER");
+        LCD_SetPosition(2,0);
+        LCD_WriteString("PLAYER");
+        for(i=0; i<2; i++) {
+            LCD_SetPosition(2, i+7);
+            card = rand()%13 + 2;
+            WriteCard(card);
+            card = CheckValue(card, *plyrSum);
+            *plyrSum += card;
+
+            LCD_SetPosition(1,i+7);
+            card = rand()%13 + 2;
+            if (i==0) WriteCard(card);
+            else {
+                LCD_WriteChar(0xFF);
+                *dlrDown = card;
+            }
+            card = CheckValue(card, *dlrSum);
+            *dlrSum += card;
+        }
+        *points -= _blackjack_cost;
+    }
+    // Chose to Stand
+    else if(turn == -1) {
+        LCD_SetPosition(1, 8);
+        WriteCard(*dlrDown);
+        while(*dlrSum < 17) {
+            card = rand()%13 + 2;
+            WriteCard(card);
+            card = CheckValue(card, *dlrSum);
+            *dlrSum += card;
+        }
+        LCD_SetPosition(1,0);
+        if(*dlrSum > 21 || *dlrSum < *plyrSum) {
+            LCD_WriteString("U WIN!");
+            *points += _blackjack_cost + _blackjack_cost;
+        } else if(*dlrSum == *plyrSum) {
+            LCD_WriteString("U TIE!");
+            *points += _blackjack_cost;
+        } else {
+            LCD_WriteString("U LOSE");
+        }
+        WritePoints(*points);
+        *dlrDown = 0;
+        *plyrSum = 0;
+        *dlrSum = 0;
+        return 0;
+    }
+    // New Hit
+    else {
+        LCD_SetPosition(2,turn+8);
+        card = rand()%13 + 2;
+        WriteCard(card);
+        card = CheckValue(card, *plyrSum);
+        *plyrSum += card;
+    }
+
+    // Bust
+    if(*plyrSum > 21) {
+        LCD_SetPosition(1,0);
+        LCD_WriteString("U LOSE");
+        WritePoints(*points);
+        *dlrDown = 0;
+        *plyrSum = 0;
+        *dlrSum = 0;
+        return 0;
+    }
+
+    WritePoints(*points);
+    return ++turn;
 }

@@ -13,12 +13,12 @@ Section Cross References
     startup.o(.text) refers to startup.o(HEAP) for Heap_Mem
     startup.o(.text) refers to startup.o(STACK) for Stack_Mem
     davis_haney_final.o(.text) refers to lcd_driver.o(.text) for LCD_Clear
+    davis_haney_final.o(.text) refers to casino.o(.text) for RunSlots
     davis_haney_final.o(.text) refers to timer.o(.text) for delayMs
-    davis_haney_final.o(.text) refers to casino.o(.text) for RunWheel
+    davis_haney_final.o(.text) refers to davis_haney_final.o(.data) for points
     davis_haney_final.o(.text) refers to interrupts.o(.text) for Interrupt_Init_JoystickDown
     davis_haney_final.o(.text) refers to stepmotor.o(.text) for Step_Init
     davis_haney_final.o(.text) refers to rand.o(.text) for srand
-    davis_haney_final.o(.text) refers to davis_haney_final.o(.data) for points
     lcd_driver.o(.text) refers to timer.o(.text) for delayUs
     casino.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     casino.o(.text) refers to _printf_i.o(.ARM.Collect$$_printf_percent$$00000008) for _printf_i
@@ -383,51 +383,51 @@ Image Symbol Table
     .emb_text                                0x00000240   Section       56  rand.o(.emb_text)
     .text                                    0x00000278   Section       32  startup.o(.text)
     .text                                    0x00000298   Section        0  davis_haney_final.o(.text)
-    .text                                    0x0000049c   Section        0  lcd_driver.o(.text)
-    .text                                    0x000006dc   Section        0  casino.o(.text)
-    .text                                    0x00000b94   Section        0  timer.o(.text)
-    .text                                    0x00000c00   Section        0  interrupts.o(.text)
-    .text                                    0x00000d30   Section        0  stepmotor.o(.text)
-    .text                                    0x00000e18   Section        0  noretval__2sprintf.o(.text)
-    .text                                    0x00000e40   Section        0  __printf.o(.text)
-    .text                                    0x00000ec0   Section        0  _printf_dec.o(.text)
-    .text                                    0x00000f38   Section        0  rand.o(.text)
-    .text                                    0x00000f78   Section      384  aeabi_sdiv.o(.text)
-    __arm_div8                               0x00000fa4   ARM Code       0  aeabi_sdiv.o(.text)
-    __arm_div5                               0x00000fc8   ARM Code       0  aeabi_sdiv.o(.text)
-    __arm_div2                               0x00000fec   ARM Code       0  aeabi_sdiv.o(.text)
-    __arm_div_large                          0x00001028   ARM Code       0  aeabi_sdiv.o(.text)
-    .text                                    0x000010f8   Section        0  heapauxi.o(.text)
-    .text                                    0x000010fe   Section        0  _printf_intcommon.o(.text)
-    .text                                    0x000011b8   Section        0  _printf_char_common.o(.text)
-    _printf_input_char                       0x000011b9   Thumb Code    10  _printf_char_common.o(.text)
-    .text                                    0x000011e8   Section        0  _sputc.o(.text)
-    .text                                    0x000011f8   Section       44  rtudiv10.o(.text)
-    .text                                    0x00001224   Section       96  sys_stackheap_outer.o(.text)
-    .text                                    0x00001284   Section        0  exit.o(.text)
-    .text                                    0x00001290   Section       12  libspace.o(.text)
-    .text                                    0x000012a4   Section        0  sys_exit.o(.text)
-    .text                                    0x000012b0   Section        4  use_no_semi.o(.text)
-    .text                                    0x000012b4   Section        0  indicate_semi.o(.text)
-    .text                                    0x000012b4   Section       12  rt_fp_status_addr_intlibspace.o(.text)
-    .text_udiv                               0x000012c0   Section       36  aeabi_sdiv.o(.text_udiv)
-    i.__ARM_common_call_via_r1               0x000012e4   Section        0  __printf.o(i.__ARM_common_call_via_r1)
-    i.__ARM_common_call_via_r2               0x000012e6   Section        0  __printf.o(i.__ARM_common_call_via_r2)
-    x$fpl$dfix                               0x000012e8   Section      112  dfix.o(x$fpl$dfix)
-    x$fpl$dflt                               0x00001358   Section       88  dflt_noclz.o(x$fpl$dflt)
-    x$fpl$dmul                               0x000013b0   Section      384  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x00001530   Section      192  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x000015f0   Section       16  dretinf.o(x$fpl$dretinf)
-    x$fpl$fpinit                             0x00001604   Section       24  fpinit.o(x$fpl$fpinit)
-    x$fpl$usenofp                            0x0000161c   Section        0  usenofp.o(x$fpl$usenofp)
-    .data                                    0x40000000   Section       12  davis_haney_final.o(.data)
-    .bss                                     0x4000000c   Section      228  rand.o(.bss)
-    .bss                                     0x400000f0   Section       96  libspace.o(.bss)
-    HEAP                                     0x40000150   Section        0  startup.o(HEAP)
-    STACK                                    0x40000150   Section     1160  startup.o(STACK)
-    Heap_Mem                                 0x40000150   Data           0  startup.o(HEAP)
-    Stack_Mem                                0x40000150   Data        1024  startup.o(STACK)
-    Stack_Top                                0x400005d8   Data           0  startup.o(STACK)
+    .text                                    0x000005a4   Section        0  lcd_driver.o(.text)
+    .text                                    0x000007e4   Section        0  casino.o(.text)
+    .text                                    0x00001190   Section        0  interrupts.o(.text)
+    .text                                    0x000012c0   Section        0  stepmotor.o(.text)
+    .text                                    0x000013a0   Section        0  timer.o(.text)
+    .text                                    0x00001414   Section        0  noretval__2sprintf.o(.text)
+    .text                                    0x0000143c   Section        0  __printf.o(.text)
+    .text                                    0x000014bc   Section        0  _printf_dec.o(.text)
+    .text                                    0x00001534   Section        0  rand.o(.text)
+    .text                                    0x00001574   Section      384  aeabi_sdiv.o(.text)
+    __arm_div8                               0x000015a0   ARM Code       0  aeabi_sdiv.o(.text)
+    __arm_div5                               0x000015c4   ARM Code       0  aeabi_sdiv.o(.text)
+    __arm_div2                               0x000015e8   ARM Code       0  aeabi_sdiv.o(.text)
+    __arm_div_large                          0x00001624   ARM Code       0  aeabi_sdiv.o(.text)
+    .text                                    0x000016f4   Section        0  heapauxi.o(.text)
+    .text                                    0x000016fa   Section        0  _printf_intcommon.o(.text)
+    .text                                    0x000017b4   Section        0  _printf_char_common.o(.text)
+    _printf_input_char                       0x000017b5   Thumb Code    10  _printf_char_common.o(.text)
+    .text                                    0x000017e4   Section        0  _sputc.o(.text)
+    .text                                    0x000017f4   Section       44  rtudiv10.o(.text)
+    .text                                    0x00001820   Section       96  sys_stackheap_outer.o(.text)
+    .text                                    0x00001880   Section        0  exit.o(.text)
+    .text                                    0x0000188c   Section       12  libspace.o(.text)
+    .text                                    0x000018a0   Section        0  sys_exit.o(.text)
+    .text                                    0x000018ac   Section        4  use_no_semi.o(.text)
+    .text                                    0x000018b0   Section        0  indicate_semi.o(.text)
+    .text                                    0x000018b0   Section       12  rt_fp_status_addr_intlibspace.o(.text)
+    .text_udiv                               0x000018bc   Section       36  aeabi_sdiv.o(.text_udiv)
+    i.__ARM_common_call_via_r1               0x000018e0   Section        0  __printf.o(i.__ARM_common_call_via_r1)
+    i.__ARM_common_call_via_r2               0x000018e2   Section        0  __printf.o(i.__ARM_common_call_via_r2)
+    x$fpl$dfix                               0x000018e4   Section      112  dfix.o(x$fpl$dfix)
+    x$fpl$dflt                               0x00001954   Section       88  dflt_noclz.o(x$fpl$dflt)
+    x$fpl$dmul                               0x000019ac   Section      384  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x00001b2c   Section      192  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x00001bec   Section       16  dretinf.o(x$fpl$dretinf)
+    x$fpl$fpinit                             0x00001c00   Section       24  fpinit.o(x$fpl$fpinit)
+    x$fpl$usenofp                            0x00001c18   Section        0  usenofp.o(x$fpl$usenofp)
+    .data                                    0x40000000   Section       28  davis_haney_final.o(.data)
+    .bss                                     0x4000001c   Section      228  rand.o(.bss)
+    .bss                                     0x40000100   Section       96  libspace.o(.bss)
+    HEAP                                     0x40000160   Section        0  startup.o(HEAP)
+    STACK                                    0x40000160   Section     1160  startup.o(STACK)
+    Heap_Mem                                 0x40000160   Data           0  startup.o(HEAP)
+    Stack_Mem                                0x40000160   Data        1024  startup.o(STACK)
+    Stack_Top                                0x400005e8   Data           0  startup.o(STACK)
 
     Global Symbols
 
@@ -521,85 +521,96 @@ Image Symbol Table
     Inline ARM to Thumb Veneer to rand       0x00000238   ARM Code       8  rand.o(.emb_text)
     rand                                     0x00000241   Thumb Code    52  rand.o(.emb_text)
     __user_initial_stackheap                 0x00000278   ARM Code       0  startup.o(.text)
-    JoystickDown_ISR                         0x00000298   ARM Code     204  davis_haney_final.o(.text)
-    PushButton_ISR                           0x00000364   ARM Code      84  davis_haney_final.o(.text)
-    JoystickPress_ISR                        0x000003b8   ARM Code      84  davis_haney_final.o(.text)
-    main                                     0x0000040c   ARM Code      64  davis_haney_final.o(.text)
-    LCD_Command                              0x0000049c   ARM Code     108  lcd_driver.o(.text)
-    LCD_Init                                 0x00000508   ARM Code     168  lcd_driver.o(.text)
-    LCD_WriteChar                            0x000005b0   ARM Code     104  lcd_driver.o(.text)
-    LCD_WriteString                          0x00000618   ARM Code      48  lcd_driver.o(.text)
-    LCD_CreateChar                           0x00000648   ARM Code      76  lcd_driver.o(.text)
-    LCD_SetPosition                          0x00000694   ARM Code      44  lcd_driver.o(.text)
-    LCD_Clear                                0x000006c0   ARM Code      20  lcd_driver.o(.text)
-    WritePoints                              0x000006dc   ARM Code      52  casino.o(.text)
-    HugeWinner                               0x00000710   ARM Code      76  casino.o(.text)
-    Winner                                   0x0000075c   ARM Code      56  casino.o(.text)
-    CheckPoints                              0x00000794   ARM Code      24  casino.o(.text)
-    RunSlots                                 0x000007ac   ARM Code     452  casino.o(.text)
-    Slots_Init                               0x00000970   ARM Code     228  casino.o(.text)
-    RunWheel                                 0x00000a54   ARM Code     220  casino.o(.text)
-    delayUs                                  0x00000b94   ARM Code      76  timer.o(.text)
-    delayMs                                  0x00000be0   ARM Code      28  timer.o(.text)
-    Interrupt_Init_JoystickDown              0x00000c00   ARM Code      88  interrupts.o(.text)
-    Interrupt_Init_JoystickPress             0x00000c58   ARM Code     104  interrupts.o(.text)
-    Interrupt_Init_PushButton                0x00000cc0   ARM Code     104  interrupts.o(.text)
-    Step_Init                                0x00000d30   ARM Code      48  stepmotor.o(.text)
-    Step_Forward                             0x00000d60   ARM Code     172  stepmotor.o(.text)
-    Inline ARM to Thumb Veneer to __2sprintf 0x00000e10   ARM Code       8  noretval__2sprintf.o(.text)
-    __2sprintf                               0x00000e19   Thumb Code    36  noretval__2sprintf.o(.text)
-    __printf                                 0x00000e41   Thumb Code   120  __printf.o(.text)
-    Inline ARM to Thumb Veneer to _printf_int_dec 0x00000eb8   ARM Code       8  _printf_dec.o(.text)
-    _printf_int_dec                          0x00000ec1   Thumb Code    94  _printf_dec.o(.text)
-    Inline ARM to Thumb Veneer to srand      0x00000f30   ARM Code       8  rand.o(.text)
-    srand                                    0x00000f39   Thumb Code    48  rand.o(.text)
-    _rand_init                               0x00000f69   Thumb Code     4  rand.o(.text)
-    __aeabi_idiv                             0x00000f78   ARM Code       0  aeabi_sdiv.o(.text)
-    __aeabi_idivmod                          0x00000f78   ARM Code     384  aeabi_sdiv.o(.text)
-    __use_two_region_memory                  0x000010f9   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x000010fb   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x000010fd   Thumb Code     2  heapauxi.o(.text)
-    _printf_int_common                       0x000010ff   Thumb Code   186  _printf_intcommon.o(.text)
-    _printf_char_common                      0x000011c3   Thumb Code    34  _printf_char_common.o(.text)
-    _sputc                                   0x000011e9   Thumb Code    10  _sputc.o(.text)
-    Inline Thumb to ARM Veneer to __rt_udiv10 0x000011f5   Thumb Code     4  rtudiv10.o(.text)
-    __rt_udiv10                              0x000011f8   ARM Code      44  rtudiv10.o(.text)
-    __user_setup_stackheap                   0x00001224   ARM Code      96  sys_stackheap_outer.o(.text)
-    exit                                     0x00001285   Thumb Code    12  exit.o(.text)
-    __user_libspace                          0x00001290   ARM Code      12  libspace.o(.text)
-    __user_perproc_libspace                  0x00001290   ARM Code       0  libspace.o(.text)
-    __user_perthread_libspace                0x00001290   ARM Code       0  libspace.o(.text)
-    Inline ARM to Thumb Veneer to _sys_exit  0x0000129c   ARM Code       8  sys_exit.o(.text)
-    _sys_exit                                0x000012a5   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x000012b0   ARM Code       0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x000012b0   ARM Code       4  use_no_semi.o(.text)
-    __rt_fp_status_addr                      0x000012b4   ARM Code      12  rt_fp_status_addr_intlibspace.o(.text)
-    __semihosting_library_function           0x000012b4   ARM Code       0  indicate_semi.o(.text)
-    __aeabi_uidiv                            0x000012c0   ARM Code       0  aeabi_sdiv.o(.text_udiv)
-    __aeabi_uidivmod                         0x000012c0   ARM Code      36  aeabi_sdiv.o(.text_udiv)
-    __ARM_common_call_via_r1                 0x000012e5   Thumb Code     2  __printf.o(i.__ARM_common_call_via_r1)
-    __ARM_common_call_via_r2                 0x000012e7   Thumb Code     2  __printf.o(i.__ARM_common_call_via_r2)
-    __aeabi_d2iz                             0x000012e8   ARM Code       0  dfix.o(x$fpl$dfix)
-    _dfix                                    0x000012e8   ARM Code     112  dfix.o(x$fpl$dfix)
-    __aeabi_i2d                              0x00001358   ARM Code       0  dflt_noclz.o(x$fpl$dflt)
-    _dflt                                    0x00001358   ARM Code      88  dflt_noclz.o(x$fpl$dflt)
-    __dflt_normalise                         0x00001368   ARM Code       0  dflt_noclz.o(x$fpl$dflt)
-    __aeabi_dmul                             0x000013b0   ARM Code       0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x000013b0   ARM Code     372  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x00001530   ARM Code     192  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x000015f0   ARM Code      16  dretinf.o(x$fpl$dretinf)
-    Inline Thumb to ARM Veneer to _fp_init   0x00001601   Thumb Code     4  fpinit.o(x$fpl$fpinit)
-    _fp_init                                 0x00001604   ARM Code      24  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00001614   ARM Code       0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x0000161c   Number         0  anon$$obj.o(Region$$Table)
-    __I$use$fp                               0x0000161c   ARM Code       0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Limit                     0x0000163c   Number         0  anon$$obj.o(Region$$Table)
+    JoystickDown_ISR                         0x00000298   ARM Code     296  davis_haney_final.o(.text)
+    PushButton_ISR                           0x000003c0   ARM Code     204  davis_haney_final.o(.text)
+    JoystickPress_ISR                        0x0000048c   ARM Code     212  davis_haney_final.o(.text)
+    main                                     0x00000560   ARM Code      64  davis_haney_final.o(.text)
+    LCD_Command                              0x000005a4   ARM Code     108  lcd_driver.o(.text)
+    LCD_Init                                 0x00000610   ARM Code     168  lcd_driver.o(.text)
+    LCD_WriteChar                            0x000006b8   ARM Code     104  lcd_driver.o(.text)
+    LCD_WriteString                          0x00000720   ARM Code      48  lcd_driver.o(.text)
+    LCD_CreateChar                           0x00000750   ARM Code      76  lcd_driver.o(.text)
+    LCD_SetPosition                          0x0000079c   ARM Code      44  lcd_driver.o(.text)
+    LCD_Clear                                0x000007c8   ARM Code      20  lcd_driver.o(.text)
+    WritePoints                              0x000007e4   ARM Code      52  casino.o(.text)
+    WriteInt                                 0x00000818   ARM Code      40  casino.o(.text)
+    HugeWinner                               0x00000840   ARM Code      76  casino.o(.text)
+    Winner                                   0x0000088c   ARM Code      56  casino.o(.text)
+    CheckPoints                              0x000008c4   ARM Code      24  casino.o(.text)
+    GameSelect                               0x000008dc   ARM Code      56  casino.o(.text)
+    RunSlots                                 0x00000914   ARM Code     484  casino.o(.text)
+    Slots_Init                               0x00000af8   ARM Code     228  casino.o(.text)
+    Wheel_Init                               0x00000bdc   ARM Code      48  casino.o(.text)
+    RunWheel                                 0x00000c0c   ARM Code     368  casino.o(.text)
+    BlackJack_Init                           0x00000d7c   ARM Code      68  casino.o(.text)
+    WriteCard                                0x00000dc0   ARM Code     164  casino.o(.text)
+    CheckValue                               0x00000e64   ARM Code      64  casino.o(.text)
+    RunBlackJack                             0x00000ea4   ARM Code     740  casino.o(.text)
+    Interrupt_Init_JoystickDown              0x00001190   ARM Code      88  interrupts.o(.text)
+    Interrupt_Init_JoystickPress             0x000011e8   ARM Code     104  interrupts.o(.text)
+    Interrupt_Init_PushButton                0x00001250   ARM Code     104  interrupts.o(.text)
+    Step_Init                                0x000012c0   ARM Code      48  stepmotor.o(.text)
+    Step_Forward                             0x000012f0   ARM Code     172  stepmotor.o(.text)
+    delayUs                                  0x000013a0   ARM Code      76  timer.o(.text)
+    delayMs                                  0x000013ec   ARM Code      28  timer.o(.text)
+    Inline ARM to Thumb Veneer to __2sprintf 0x0000140c   ARM Code       8  noretval__2sprintf.o(.text)
+    __2sprintf                               0x00001415   Thumb Code    36  noretval__2sprintf.o(.text)
+    __printf                                 0x0000143d   Thumb Code   120  __printf.o(.text)
+    Inline ARM to Thumb Veneer to _printf_int_dec 0x000014b4   ARM Code       8  _printf_dec.o(.text)
+    _printf_int_dec                          0x000014bd   Thumb Code    94  _printf_dec.o(.text)
+    Inline ARM to Thumb Veneer to srand      0x0000152c   ARM Code       8  rand.o(.text)
+    srand                                    0x00001535   Thumb Code    48  rand.o(.text)
+    _rand_init                               0x00001565   Thumb Code     4  rand.o(.text)
+    __aeabi_idiv                             0x00001574   ARM Code       0  aeabi_sdiv.o(.text)
+    __aeabi_idivmod                          0x00001574   ARM Code     384  aeabi_sdiv.o(.text)
+    __use_two_region_memory                  0x000016f5   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x000016f7   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x000016f9   Thumb Code     2  heapauxi.o(.text)
+    _printf_int_common                       0x000016fb   Thumb Code   186  _printf_intcommon.o(.text)
+    _printf_char_common                      0x000017bf   Thumb Code    34  _printf_char_common.o(.text)
+    _sputc                                   0x000017e5   Thumb Code    10  _sputc.o(.text)
+    Inline Thumb to ARM Veneer to __rt_udiv10 0x000017f1   Thumb Code     4  rtudiv10.o(.text)
+    __rt_udiv10                              0x000017f4   ARM Code      44  rtudiv10.o(.text)
+    __user_setup_stackheap                   0x00001820   ARM Code      96  sys_stackheap_outer.o(.text)
+    exit                                     0x00001881   Thumb Code    12  exit.o(.text)
+    __user_libspace                          0x0000188c   ARM Code      12  libspace.o(.text)
+    __user_perproc_libspace                  0x0000188c   ARM Code       0  libspace.o(.text)
+    __user_perthread_libspace                0x0000188c   ARM Code       0  libspace.o(.text)
+    Inline ARM to Thumb Veneer to _sys_exit  0x00001898   ARM Code       8  sys_exit.o(.text)
+    _sys_exit                                0x000018a1   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x000018ac   ARM Code       0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000018ac   ARM Code       4  use_no_semi.o(.text)
+    __rt_fp_status_addr                      0x000018b0   ARM Code      12  rt_fp_status_addr_intlibspace.o(.text)
+    __semihosting_library_function           0x000018b0   ARM Code       0  indicate_semi.o(.text)
+    __aeabi_uidiv                            0x000018bc   ARM Code       0  aeabi_sdiv.o(.text_udiv)
+    __aeabi_uidivmod                         0x000018bc   ARM Code      36  aeabi_sdiv.o(.text_udiv)
+    __ARM_common_call_via_r1                 0x000018e1   Thumb Code     2  __printf.o(i.__ARM_common_call_via_r1)
+    __ARM_common_call_via_r2                 0x000018e3   Thumb Code     2  __printf.o(i.__ARM_common_call_via_r2)
+    __aeabi_d2iz                             0x000018e4   ARM Code       0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x000018e4   ARM Code     112  dfix.o(x$fpl$dfix)
+    __aeabi_i2d                              0x00001954   ARM Code       0  dflt_noclz.o(x$fpl$dflt)
+    _dflt                                    0x00001954   ARM Code      88  dflt_noclz.o(x$fpl$dflt)
+    __dflt_normalise                         0x00001964   ARM Code       0  dflt_noclz.o(x$fpl$dflt)
+    __aeabi_dmul                             0x000019ac   ARM Code       0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x000019ac   ARM Code     372  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x00001b2c   ARM Code     192  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x00001bec   ARM Code      16  dretinf.o(x$fpl$dretinf)
+    Inline Thumb to ARM Veneer to _fp_init   0x00001bfd   Thumb Code     4  fpinit.o(x$fpl$fpinit)
+    _fp_init                                 0x00001c00   ARM Code      24  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00001c10   ARM Code       0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x00001c18   Number         0  anon$$obj.o(Region$$Table)
+    __I$use$fp                               0x00001c18   ARM Code       0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Limit                     0x00001c38   Number         0  anon$$obj.o(Region$$Table)
     points                                   0x40000000   Data           4  davis_haney_final.o(.data)
-    currentStep                              0x40000004   Data           4  davis_haney_final.o(.data)
-    game                                     0x40000008   Data           4  davis_haney_final.o(.data)
-    _random_number_data                      0x4000000c   Data         228  rand.o(.bss)
-    __libspace_start                         0x400000f0   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x40000150   Data           0  libspace.o(.bss)
+    turn                                     0x40000004   Data           4  davis_haney_final.o(.data)
+    dlrSum                                   0x40000008   Data           4  davis_haney_final.o(.data)
+    game                                     0x4000000c   Data           4  davis_haney_final.o(.data)
+    currentStep                              0x40000010   Data           4  davis_haney_final.o(.data)
+    dlrDown                                  0x40000014   Data           4  davis_haney_final.o(.data)
+    plyrSum                                  0x40000018   Data           4  davis_haney_final.o(.data)
+    _random_number_data                      0x4000001c   Data         228  rand.o(.bss)
+    __libspace_start                         0x40000100   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x40000160   Data           0  libspace.o(.bss)
 
 
 
@@ -609,9 +620,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000110
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001648, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001c54, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x0000163c, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00001c38, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -671,58 +682,58 @@ Memory Map of the image
     0x00000238   0x00000008   Ven    RO          166    .emb_text           c_t.l(rand.o)
     0x00000240   0x00000038   Code   RO          166    .emb_text           c_t.l(rand.o)
     0x00000278   0x00000020   Code   RO            4    .text               startup.o
-    0x00000298   0x00000204   Code   RO           11    .text               davis_haney_final.o
-    0x0000049c   0x00000240   Code   RO           48    .text               lcd_driver.o
-    0x000006dc   0x000004b8   Code   RO           66    .text               casino.o
-    0x00000b94   0x0000006c   Code   RO           91    .text               timer.o
-    0x00000c00   0x00000130   Code   RO          103    .text               interrupts.o
-    0x00000d30   0x000000e0   Code   RO          118    .text               stepmotor.o
-    0x00000e10   0x00000008   Ven    RO          134    .text               c_t.l(noretval__2sprintf.o)
-    0x00000e18   0x00000028   Code   RO          134    .text               c_t.l(noretval__2sprintf.o)
-    0x00000e40   0x00000078   Code   RO          136    .text               c_t.l(__printf.o)
-    0x00000eb8   0x00000008   Ven    RO          142    .text               c_t.l(_printf_dec.o)
-    0x00000ec0   0x00000070   Code   RO          142    .text               c_t.l(_printf_dec.o)
-    0x00000f30   0x00000008   Ven    RO          167    .text               c_t.l(rand.o)
-    0x00000f38   0x00000040   Code   RO          167    .text               c_t.l(rand.o)
-    0x00000f78   0x00000180   Code   RO          171    .text               c_t.l(aeabi_sdiv.o)
-    0x000010f8   0x00000006   Code   RO          187    .text               c_t.l(heapauxi.o)
-    0x000010fe   0x000000ba   Code   RO          206    .text               c_t.l(_printf_intcommon.o)
-    0x000011b8   0x00000030   Code   RO          208    .text               c_t.l(_printf_char_common.o)
-    0x000011e8   0x0000000a   Code   RO          210    .text               c_t.l(_sputc.o)
-    0x000011f2   0x00000002   PAD
-    0x000011f4   0x00000004   Ven    RO          213    .text               c_t.l(rtudiv10.o)
-    0x000011f8   0x0000002c   Code   RO          213    .text               c_t.l(rtudiv10.o)
-    0x00001224   0x00000060   Code   RO          286    .text               c_t.l(sys_stackheap_outer.o)
-    0x00001284   0x0000000c   Code   RO          288    .text               c_t.l(exit.o)
-    0x00001290   0x0000000c   Code   RO          306    .text               c_t.l(libspace.o)
-    0x0000129c   0x00000008   Ven    RO          325    .text               c_t.l(sys_exit.o)
-    0x000012a4   0x0000000c   Code   RO          325    .text               c_t.l(sys_exit.o)
-    0x000012b0   0x00000004   Code   RO          327    .text               c_t.l(use_no_semi.o)
-    0x000012b4   0x00000000   Code   RO          329    .text               c_t.l(indicate_semi.o)
-    0x000012b4   0x0000000c   Code   RO          340    .text               c_t.l(rt_fp_status_addr_intlibspace.o)
-    0x000012c0   0x00000024   Code   RO          172    .text_udiv          c_t.l(aeabi_sdiv.o)
-    0x000012e4   0x00000002   Code   RO          140    i.__ARM_common_call_via_r1  c_t.l(__printf.o)
-    0x000012e6   0x00000002   Code   RO          138    i.__ARM_common_call_via_r2  c_t.l(__printf.o)
-    0x000012e8   0x00000070   Code   RO          191    x$fpl$dfix          fz_ts.l(dfix.o)
-    0x00001358   0x00000058   Code   RO          196    x$fpl$dflt          fz_ts.l(dflt_noclz.o)
-    0x000013b0   0x00000180   Code   RO          199    x$fpl$dmul          fz_ts.l(dmul.o)
-    0x00001530   0x000000c0   Code   RO          256    x$fpl$dnaninf       fz_ts.l(dnaninf.o)
-    0x000015f0   0x00000010   Code   RO          258    x$fpl$dretinf       fz_ts.l(dretinf.o)
-    0x00001600   0x00000004   Ven    RO          323    x$fpl$fpinit        fz_ts.l(fpinit.o)
-    0x00001604   0x00000018   Code   RO          323    x$fpl$fpinit        fz_ts.l(fpinit.o)
-    0x0000161c   0x00000000   Code   RO          260    x$fpl$usenofp       fz_ts.l(usenofp.o)
-    0x0000161c   0x00000020   Data   RO          384    Region$$Table       anon$$obj.o
+    0x00000298   0x0000030c   Code   RO           11    .text               davis_haney_final.o
+    0x000005a4   0x00000240   Code   RO           48    .text               lcd_driver.o
+    0x000007e4   0x000009ac   Code   RO           66    .text               casino.o
+    0x00001190   0x00000130   Code   RO           91    .text               interrupts.o
+    0x000012c0   0x000000e0   Code   RO          106    .text               stepmotor.o
+    0x000013a0   0x0000006c   Code   RO          118    .text               timer.o
+    0x0000140c   0x00000008   Ven    RO          134    .text               c_t.l(noretval__2sprintf.o)
+    0x00001414   0x00000028   Code   RO          134    .text               c_t.l(noretval__2sprintf.o)
+    0x0000143c   0x00000078   Code   RO          136    .text               c_t.l(__printf.o)
+    0x000014b4   0x00000008   Ven    RO          142    .text               c_t.l(_printf_dec.o)
+    0x000014bc   0x00000070   Code   RO          142    .text               c_t.l(_printf_dec.o)
+    0x0000152c   0x00000008   Ven    RO          167    .text               c_t.l(rand.o)
+    0x00001534   0x00000040   Code   RO          167    .text               c_t.l(rand.o)
+    0x00001574   0x00000180   Code   RO          171    .text               c_t.l(aeabi_sdiv.o)
+    0x000016f4   0x00000006   Code   RO          187    .text               c_t.l(heapauxi.o)
+    0x000016fa   0x000000ba   Code   RO          206    .text               c_t.l(_printf_intcommon.o)
+    0x000017b4   0x00000030   Code   RO          208    .text               c_t.l(_printf_char_common.o)
+    0x000017e4   0x0000000a   Code   RO          210    .text               c_t.l(_sputc.o)
+    0x000017ee   0x00000002   PAD
+    0x000017f0   0x00000004   Ven    RO          213    .text               c_t.l(rtudiv10.o)
+    0x000017f4   0x0000002c   Code   RO          213    .text               c_t.l(rtudiv10.o)
+    0x00001820   0x00000060   Code   RO          286    .text               c_t.l(sys_stackheap_outer.o)
+    0x00001880   0x0000000c   Code   RO          288    .text               c_t.l(exit.o)
+    0x0000188c   0x0000000c   Code   RO          306    .text               c_t.l(libspace.o)
+    0x00001898   0x00000008   Ven    RO          325    .text               c_t.l(sys_exit.o)
+    0x000018a0   0x0000000c   Code   RO          325    .text               c_t.l(sys_exit.o)
+    0x000018ac   0x00000004   Code   RO          327    .text               c_t.l(use_no_semi.o)
+    0x000018b0   0x00000000   Code   RO          329    .text               c_t.l(indicate_semi.o)
+    0x000018b0   0x0000000c   Code   RO          340    .text               c_t.l(rt_fp_status_addr_intlibspace.o)
+    0x000018bc   0x00000024   Code   RO          172    .text_udiv          c_t.l(aeabi_sdiv.o)
+    0x000018e0   0x00000002   Code   RO          140    i.__ARM_common_call_via_r1  c_t.l(__printf.o)
+    0x000018e2   0x00000002   Code   RO          138    i.__ARM_common_call_via_r2  c_t.l(__printf.o)
+    0x000018e4   0x00000070   Code   RO          191    x$fpl$dfix          fz_ts.l(dfix.o)
+    0x00001954   0x00000058   Code   RO          196    x$fpl$dflt          fz_ts.l(dflt_noclz.o)
+    0x000019ac   0x00000180   Code   RO          199    x$fpl$dmul          fz_ts.l(dmul.o)
+    0x00001b2c   0x000000c0   Code   RO          256    x$fpl$dnaninf       fz_ts.l(dnaninf.o)
+    0x00001bec   0x00000010   Code   RO          258    x$fpl$dretinf       fz_ts.l(dretinf.o)
+    0x00001bfc   0x00000004   Ven    RO          323    x$fpl$fpinit        fz_ts.l(fpinit.o)
+    0x00001c00   0x00000018   Code   RO          323    x$fpl$fpinit        fz_ts.l(fpinit.o)
+    0x00001c18   0x00000000   Code   RO          260    x$fpl$usenofp       fz_ts.l(usenofp.o)
+    0x00001c18   0x00000020   Data   RO          384    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x40000000, Size: 0x000005d8, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x40000000, Size: 0x000005e8, Max: 0x00008000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x40000000   0x0000000c   Data   RW           12    .data               davis_haney_final.o
-    0x4000000c   0x000000e4   Zero   RW          168    .bss                c_t.l(rand.o)
-    0x400000f0   0x00000060   Zero   RW          307    .bss                c_t.l(libspace.o)
-    0x40000150   0x00000000   Zero   RW            2    HEAP                startup.o
-    0x40000150   0x00000488   Zero   RW            1    STACK               startup.o
+    0x40000000   0x0000001c   Data   RW           12    .data               davis_haney_final.o
+    0x4000001c   0x000000e4   Zero   RW          168    .bss                c_t.l(rand.o)
+    0x40000100   0x00000060   Zero   RW          307    .bss                c_t.l(libspace.o)
+    0x40000160   0x00000000   Zero   RW            2    HEAP                startup.o
+    0x40000160   0x00000488   Zero   RW            1    STACK               startup.o
 
 
 ==============================================================================
@@ -732,8 +743,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1208        140          0          0          0       2353   casino.o
-       516         80          0         12          0       2691   davis_haney_final.o
+      2476        268          0          0          0       4561   casino.o
+       780         76          0         28          0       2991   davis_haney_final.o
        304          8          0          0          0        825   interrupts.o
        576          8          0          0          0       1738   lcd_driver.o
        304         60          0          0       1160        468   startup.o
@@ -741,7 +752,7 @@ Image component sizes
        108          4          0          0          0        650   timer.o
 
     ----------------------------------------------------------------------
-      3240        304         32         12       1160       9482   Object Totals
+      4772        428         32         28       1160      11990   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -811,15 +822,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5660        390         32         12       1484      10118   Grand Totals
-      5660        390         32         12       1484      10118   ELF Image Totals
-      5660        390         32         12          0          0   ROM Totals
+      7192        514         32         28       1484      12574   Grand Totals
+      7192        514         32         28       1484      12574   ELF Image Totals
+      7192        514         32         28          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5692 (   5.56kB)
-    Total RW  Size (RW Data + ZI Data)              1496 (   1.46kB)
-    Total ROM Size (Code + RO Data + RW Data)       5704 (   5.57kB)
+    Total RO  Size (Code + RO Data)                 7224 (   7.05kB)
+    Total RW  Size (RW Data + ZI Data)              1512 (   1.48kB)
+    Total ROM Size (Code + RO Data + RW Data)       7252 (   7.08kB)
 
 ==============================================================================
 

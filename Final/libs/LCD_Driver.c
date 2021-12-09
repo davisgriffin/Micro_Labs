@@ -1,6 +1,9 @@
 
-// Title
-// @authors Griffin Davis and Sydnee Haney
+/**
+ * LCD Driver source file. This contains many of the functions required to
+ * efficiently drive the LMB162A LCD on board the LPC2148 education board.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #include "LPC214x.h"
 #include "LCD_Driver.h"

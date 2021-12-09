@@ -1,6 +1,11 @@
 
-// Title
-// @authors Griffin Davis and Sydnee Haney
+/**
+ * Interrupts source file. This contains functions required to set up external
+ * interrupts on the pins 0.14, 0.16, and 0.20. These pins handle the push
+ * button, joystick press, and joystick down direction on board the LPC2148
+ * education board, respectively.
+ * @authors Griffin Davis and Sydnee Haney
+ */
 
 #include "LPC214x.h"
 #include "Interrupts.h"
